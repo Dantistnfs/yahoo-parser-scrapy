@@ -1,0 +1,1 @@
+yahoo-parser-scrapy
