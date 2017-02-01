@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from yandex_parser.items import YandexParserItem
-import padnas
+import pandas as pd
 
 class YandexFinanceSpider(scrapy.Spider):
 	name = "yandex-finance"
 	allowed_domains = ["finance.yahoo.com"]
-	start_urls = ['https://finance.yahoo.com/quote/EA']
+	start_urls = []
+	companies_list = pd.read_csv("companies.csv")['Symbol']
+	for i in companies_list:
+		start_urls.append('https://finance.yahoo.com/quote/' + i)
+	
 
 	def parse(self, response):
 		item = YandexParserItem()
