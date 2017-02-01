@@ -1,1 +1,1 @@
-yahoo-parser-scrapy
+yandex_parser
